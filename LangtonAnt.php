@@ -1,5 +1,6 @@
 <?php
- $limit = 10000000; //steps to an ants
+
+$limit = 10000000; //steps to an ants
 $White = false; //box color
 $Black = true; //box color
 $Size = 128;  //box size 
@@ -16,6 +17,7 @@ $last = $count;
 $lastDeltas = [0];
 $StopIfSameDeltas = 10;
 $steps = 0;
+
 while ($steps < $limit) {
     if ($steps % $Cycle == $Remainder) {
         $diff = $count - $last;
@@ -36,6 +38,7 @@ while ($steps < $limit) {
             }
         }
     }
+    
     $pos = $y * $Size + $x;
     if ($grid[$pos] == $White) {
         $grid[$pos] = $Black;
