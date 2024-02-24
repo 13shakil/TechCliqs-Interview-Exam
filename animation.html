@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotation Animation with Click to On/Off (PHP)</title>
+<style>
+   body{
+    height:100vh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  } 
+  @keyframes rotate180 {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(0deg); 
+        }
+        100% {
+            transform: rotate(180deg);
+        }
+    }
+    .rotating-element {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        transition: transform 1s ease;
+    }
+    .rotated {
+        transform: rotate(0deg);
+        animation: rotate180 1s linear infinite;
+    }
+</style>
+</head>
+<body>
+
+<div class="rotating-element" onclick="toggleAnimation(this)"></div>
+
+<script>
+    var rotationInterval;
+    function toggleAnimation(element) {
+        element.classList.toggle('rotated');
+        if (element.classList.contains('rotated')) {
+            rotationInterval = setTimeout(function () {
+                element.classList.remove('paused');
+            }, 1000);
+        } else {
+            clearTimeout(rotationInterval);
+            element.classList.add('stopped');
+        }
+    }
+</script>
+</body>
+</html>
